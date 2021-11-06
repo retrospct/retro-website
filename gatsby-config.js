@@ -1,13 +1,22 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Justin Lee | retrospct`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    author: `@retrospct`,
+    siteUrl: `https://retro-website.netlify.app/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: "https://strapi.mikan.live",
+        collectionTypes: ["projects"],
+        singleTypes: ["home", "portfolio"],
+        queryLimit: 1000,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -20,8 +29,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `retro-website`,
+        short_name: `retro-website`,
         start_url: `/`,
         background_color: `#663399`,
         // This will impact how browsers show your PWA/website
